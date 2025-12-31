@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Trà Sói Cá Hý - Ở đây có trà ngon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF8E7;
+            --rust: #D4876C;
+            --deep-rust: #B8624A;
+            --dark-brown: #3E2723;
+            --light-beige: #F5E6D3;
+            --accent-green: #8BC34A;
+            --accent-yellow: #FFD54F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background circles */
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        body::before {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--rust), transparent);
+            top: -200px;
+            left: -200px;
+            animation-delay: -5s;
+        }
+
+        body::after {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-green), transparent);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            50% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+            75% {
+                transform: translate(40px, 60px) scale(1.05);
+            }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--rust) 0%, var(--deep-rust) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid var(--cream);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: bounce 2s infinite;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .brand-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            color: var(--accent-yellow);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: 
+                linear-gradient(135deg, rgba(255, 248, 231, 0.9) 0%, rgba(245, 230, 211, 0.9) 100%);
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text h1 {
+            font-family: 'Times New Roman';
+            font-size: 100px;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--deep-rust);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-text h1::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 80px;
+            height: 80px;
+            background: var(--accent-yellow);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.5;
+            }
+        }
+
+        .hero-text h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 20px;
+            color: var(--rust);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--dark-brown);
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--deep-rust);
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(212, 135, 108, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(212, 135, 108, 0.6);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.3);
+            transform: rotate(-3deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        /* Floating decorative elements */
+        .floating-element {
+            position: absolute;
+            animation: floatElement 15s infinite ease-in-out;
+        }
+
+        @keyframes floatElement {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(180deg);
+            }
+            75% {
+                transform: translate(40px, 40px) rotate(270deg);
+            }
+        }
+
+        .tea-cup {
+            top: 10%;
+            left: 10%;
+            font-size: 3rem;
+            opacity: 0.2;
+            animation-delay: 0s;
+        }
+
+        .tea-leaf {
+            bottom: 20%;
+            right: 15%;
+            font-size: 2.5rem;
+            opacity: 0.2;
+            animation-delay: -5s;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, var(--cream), var(--light-beige));
+        }
+
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--deep-rust);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--rust);
+            margin-bottom: 4rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: left 0.5s;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(212, 135, 108, 0.3);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .product-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--deep-rust);
+            text-align: center;
+        }
+
+        .product-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--dark-brown);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--light-beige);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--dark-brown);
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .feature:nth-child(1) { animation-delay: 0.2s; }
+        .feature:nth-child(2) { animation-delay: 0.4s; }
+        .feature:nth-child(3) { animation-delay: 0.6s; }
+
+        .feature:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(212, 135, 108, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-rust);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--rust) 0%, var(--deep-rust) 100%);
+            color: var(--cream);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 0.1s; }
+        .contact-item:nth-child(2) { animation-delay: 0.2s; }
+        .contact-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h4 {
+            font-family: 'Roboto';
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-yellow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-brown);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.4rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Decorative Elements -->
+    <div class="floating-element tea-cup">☕</div>
+    <div class="floating-element tea-leaf">🍃</div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="C:\Users\NUC\Downloads\New folder\Logo_SCH-.png" alt="Logo Tiệm Trà Sói Cá Hý">
+                </div>
+                <span class="brand-name">Tiệm trà Sói Cá Hý</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Trang Chủ</a></li>
+                <li><a href="#products">Sản Phẩm</a></li>
+                <li><a href="#about">Về Chúng Tôi</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Tiệm Trà<br>Sói Cá Hý</h1>
+                <h2>Hương vị truyền thống • Phong cách hiện đại</h2>
+                <p>Khám phá thế giới trà và trà sữa độc đáo với hương vị đậm đà, được chế biến từ những nguyên liệu tươi ngon nhất. Mỗi ly trà là một hành trình đáng nhớ!</p>
+                <a href="#contact" class="cta-button">Đặt Hàng Ngay</a>
+            </div>
+            <div class="hero-image">
+                <img src="C:\Users\NUC\Downloads\New folder\Logo_SCH-.png" alt="Tiệm Trà Sói Cá Hý">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <h2 class="section-title">Sản Phẩm Của Chúng Tôi</h2>
+        <p class="section-subtitle">Đa dạng lựa chọn • Chất lượng hàng đầu</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-icon">🍵</div>
+                <h3>Trà Truyền Thống</h3>
+                <p>Các loại trà xanh, trà đen, trà ô long được chọn lọc kỹ càng từ những vùng trồng trà nổi tiếng. Hương vị thuần khiết, đậm đà.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🧋</div>
+                <h3>Trà Sữa Đặc Biệt</h3>
+                <p>Trà sữa trân châu, trà sữa thạch, với công thức độc quyền mang đến trải nghiệm mới lạ và hấp dẫn cho mọi khách hàng.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🍹</div>
+                <h3>Trà Hoa Quả</h3>
+                <p>Kết hợp hoàn hảo giữa trà thơm ngon và hoa quả tươi mát. Lựa chọn lý tưởng cho những ngày hè nóng bức.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🌸</div>
+                <h3>Trà Hoa Đặc Sản</h3>
+                <p>Trà hoa nhài, trà hoa hồng, trà hoa cúc với hương thơm dịu nhẹ, thanh khiết. Thư giãn tinh thần và tốt cho sức khỏe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="section-title">Về Chúng Tôi</h2>
+            <p>Tiệm Trà Sói Cá Hý là điểm đến lý tưởng cho những ai yêu thích trà và trà sữa chất lượng cao. Với niềm đam mê và tâm huyết, chúng tôi mang đến những sản phẩm tuyệt vời nhất.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <h4>Chất Lượng Đảm Bảo</h4>
+                    <p>100% nguyên liệu tươi ngon, không chất bảo quản</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h4>Giao Hàng Nhanh</h4>
+                    <p>Đặt hàng online, giao tận nơi trong 30 phút</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💝</div>
+                    <h4>Giá Cả Hợp Lý</h4>
+                    <p>Ưu đãi hấp dẫn, chương trình khuyến mãi liên tục</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2 class="section-title" style="color: var(--cream);">Liên Hệ Đặt Hàng</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 1rem;">Hãy liên hệ với chúng tôi để trải nghiệm hương vị tuyệt vời!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h4>Điện Thoại</h4>
+                    <a href="tel:0123456789">093 735 08 21</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h4>Email</h4>
+                    <a href="mailto:coicoihy@gmail.com">tiemtrasoicahy@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Địa Chỉ</h4>
+                    <p>66 Thạnh Lộc 17, P. An Phú Đông<br>TP. Hồ Chí Minh</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tiệm Trà Sói Cá Hý - Ở đây có trà ngon.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animation
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.product-card, .feature, .contact-item');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                    element.classList.add('animated');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
